@@ -6488,7 +6488,7 @@ ul.wp-block-latest-posts li:last-child {
 .hero-title {
   margin-bottom: 0;
   color: var(--title-color);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.03em;
   font-size: 120px;
 }
@@ -7629,7 +7629,7 @@ ul.wp-block-latest-posts li:last-child {
   z-index: 1;
 }
 .hero-thumb-wrap16 .text-circle {
-  background: var(--theme-color);
+  background: #97D6DF;
   border-radius: 50%;
   font-size: 14px;
   font-weight: 600;
@@ -11422,7 +11422,7 @@ blockquote p {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(227, 255, 4, 0) 0%, #E3FF04 20%, #E3FF04 80%, rgba(227, 255, 4, 0) 100%);
+  background: linear-gradient(90deg, rgba(227, 255, 4, 0) 0%, #97D6DF 20%, #97D6DF 80%, rgba(227, 255, 4, 0) 100%);
 }
 .cta-wrap2 .title-area .sec-title {
   font-size: 80px;
@@ -11622,6 +11622,11 @@ blockquote p {
   .service-card2 .box-content {
     order: 3;
   }
+}
+
+.box-icon{
+  width: 200px;
+  left: 128px !important;
 }
 
 /*------------------- 4.00. Why Choose Us -------------------*/
