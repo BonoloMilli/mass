@@ -6295,14 +6295,19 @@ ul.wp-block-latest-posts li:last-child {
   .breadcumb-title {
     font-size: 40px;
   }
+
+  .breadcumb-wrapper{
+    margin-top: 130px !important;
+  }
 }
 
 .breadcumb-wrapper {
-  background-size: cover !important;
-  padding: 300px 0;
+  background-size: contain !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 150px 0;
   overflow: hidden;
   position: relative;
-  z-index: auto;
   background: var(--smoke-color);
   margin-top: 106px;
   text-align: center;
@@ -6314,6 +6319,14 @@ ul.wp-block-latest-posts li:last-child {
   inset: 0;
   background: #0A0C00;
   opacity: 0.2;
+}
+
+.breadcumb-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top: 0; right: 0; bottom: 0; left: 0; */
+  background: rgba(0, 0, 0, 0.5); /* adjust opacity here (0.3–0.6 recommended) */
+  z-index: 1;
 }
 @media (max-width: 767px) {
   .breadcumb-wrapper {

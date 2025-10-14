@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Frisk - Creative Agency & Portfolio HTML Template</title>
-    <meta name="description" content="Frisk - Creative Agency & Portfolio HTML Template">
-    <meta name="keywords" content="Frisk - Creative Agency & Portfolio HTML Template">
+    <title>Mass Studio - Creative Agency</title>
+    <meta name="description" content="MASS Studio is a Johannesburg-based full creative studio crafting detail-driven brands and high-performing websites for South African businesses. Relationship-first, boutique care, real results.">
+    <meta name="keywords" content="MASS Studio is a Johannesburg-based full creative studio crafting detail-driven brands and high-performing websites for South African businesses. Relationship-first, boutique care, real results.">
     <meta name="robots" content="INDEX,FOLLOW">
 
     <!-- Mobile Specific Metas -->
@@ -350,7 +350,7 @@
                 <div class="col-lg-7">
                     <a href="palm.html" class="portfolio-wrap style3">
                         <div class="portfolio-thumb">
-                            <img src="assets/3.jpg" alt="portfolio">
+                            <img src="assets/5.B.jpg" alt="portfolio">
                         </div>
                         <div class="portfolio-details">
                             <ul class="portfolio-meta">
@@ -536,7 +536,7 @@
                 <div class="col-lg-6">
                     <div class="contact-form-wrap">
                         
-                        <form action="mail.php" method="POST" class="contact-form ajax-contact">
+                        <form class="contact-form ajax-contact">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -550,7 +550,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control style-border" name="website" id="website" placeholder="Website link">
+                                        <input type="text" class="form-control style-border" name="website" id="website" placeholder="Subject">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -681,6 +681,7 @@
     </div>
 
 
+
     <!-- Jquery -->
     <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
     <script src="assets/js/slick.min.js"></script>
@@ -703,6 +704,89 @@
 
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+$(document).ready(function() {
+    // Initialize EmailJS
+    emailjs.init("ZtrPvmZzYP3PNJiUr"); // Replace with your EmailJS Public Key
+
+    $(".ajax-contact").on("submit", function(e) {
+        e.preventDefault();
+
+        const $btn = $(this).find("button[type=submit]");
+        $btn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin me-2"></i> Sending...');
+
+        // Get current time
+        const now = new Date();
+        const formattedTime = now.toLocaleString();
+
+        // Gather form data
+        const formData = {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            website: $("#website").val(),
+            message: $("#contactForm").val(),
+            time: formattedTime
+        };
+
+        // Basic validation
+        if (!formData.name || !formData.email || !formData.message) {
+            Swal.fire({
+                icon: "warning",
+                title: "Missing Fields",
+                text: "Please fill in all required fields before sending.",
+                confirmButtonColor: "#032A63"
+            });
+            $btn.prop("disabled", false).html(`
+                <span class="link-effect">
+                    <span class="effect-1">SEND MESSAGE</span>
+                    <span class="effect-1">SEND MESSAGE</span>
+                </span>
+            `);
+            return;
+        }
+
+        // Send email via EmailJS
+        emailjs.send("service_3s3qu9u", "template_4rwhb8f", formData)
+        .then(function(response) {
+            Swal.fire({
+                icon: "success",
+                title: "Message Sent!",
+                text: "Thank you for contacting us. We'll get back to you soon.",
+                confirmButtonColor: "#032A63"
+            });
+            $(".ajax-contact")[0].reset();
+        })
+        .catch(function(error) {
+            Swal.fire({
+                icon: "error",
+                title: "Message Failed",
+                text: "There was an error sending your message. Please try again later.",
+                confirmButtonColor: "#d33"
+            });
+            console.error("EmailJS Error:", error);
+        })
+        .finally(function() {
+            $btn.prop("disabled", false).html(`
+                <span class="link-effect">
+                    <span class="effect-1">SEND MESSAGE</span>
+                    <span class="effect-1">SEND MESSAGE</span>
+                </span>
+            `);
+        });
+    });
+});
+</script>
+
 </body>
 
 </html>
