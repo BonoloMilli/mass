@@ -6580,14 +6580,14 @@ ul.wp-block-latest-posts li:last-child {
     letter-spacing: normal;
   }
   .hero-title {
-    font-size: 39px;
+    font-size: 50px;
     letter-spacing: normal;
   }
 }
 /* Extra small devices */
 @media (max-width: 375px) {
   .hero-title {
-    font-size: 34px;
+    font-size: 48px;
   }
 }
 /* Hero 2 ---------------------------------- */
